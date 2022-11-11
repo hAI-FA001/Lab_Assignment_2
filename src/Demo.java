@@ -10,15 +10,16 @@ import java.util.*;
 
 public class Demo {
 
-    final static int NUM_OBJECTS_TO_ADD =10;
+    final static int NUM_OBJECTS_TO_ADD = 10;
 
     public static void main(String[] args) {
 
-        List products = new ArrayList<Product>();
+        List<Product> products = new ArrayList<Product>();
 
         for(int i = 0; i < NUM_OBJECTS_TO_ADD; i++) {
             try {
-                products.add(new Product("Product #" + (char) (i+65), ((i + 1) * 5 - 2), (i + 2), new SecureRandom().nextDouble(5.0),
+                products.add(new Product("Product #" + (char) (i+65),
+                        ((i + 1) * 5 - 2), (i + 2), new SecureRandom().nextDouble(5.0),
                         new Date(110 + i, i % 12, i % 30)));
             } catch (IllegalArgumentException e) {
                 i--;
@@ -28,20 +29,30 @@ public class Demo {
         Collections.sort(products);
         printList(products);
         System.out.println("------------------------------------------------------");
+        System.out.println("Enter to proceed");
+        new Scanner(System.in).nextLine();
 
         sortBy(products, new PriceComparator());
         printList(products);
         System.out.println("------------------------------------------------------");
+        System.out.println("Enter to proceed");
+        new Scanner(System.in).nextLine();
 
         sortByAndPrintList(products, false, new RatingComparator());
         System.out.println("------------------------------------------------------");
+        System.out.println("Enter to proceed");
+        new Scanner(System.in).nextLine();
 
         sortByAndPrintList(products, true, new DateComparator());
         System.out.println("------------------------------------------------------");
+        System.out.println("Enter to proceed");
+        new Scanner(System.in).nextLine();
 
         sortBy(products, new QuantityComparator().reversed());
         printList(products);
         System.out.println("------------------------------------------------------");
+        System.out.println("Enter to proceed");
+        new Scanner(System.in).nextLine();
 
         printListInReverse(products);
         System.out.println("------------------------------------------------------");
@@ -66,8 +77,7 @@ public class Demo {
     }
 
     public static void printListInReverse(List<Product> products){
-        List p2 = new ArrayList();
-        p2.addAll(products);
+        List<Product> p2 = new ArrayList(products);
         Collections.reverse(p2);
         p2.iterator().forEachRemaining(System.out::println);
     }

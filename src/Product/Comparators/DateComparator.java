@@ -2,7 +2,6 @@ package Product.Comparators;
 
 import Product.Product;
 
-import java.sql.Date;
 import java.util.Comparator;
 
 public class DateComparator implements Comparator<Product> {
